@@ -70,7 +70,7 @@ namespace VLO.Controllers
                 mesas.Estado = false;
                 db.Entry(mesas).State = EntityState.Modified;
                 db.SaveChanges();
-
+                Session["pedidoid"] = pedido.IdPedido;
                 return RedirectToAction("Create","DetallePedidos");
             }
 

@@ -9,20 +9,13 @@
 <p>
     @Html.ActionLink(" Nuevo", "Create", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
 </p>
-<center>
-    <div class="col-lg-8 col-lg-offset-2 " style="margin-top: 30px;">
-        <form action="@Url.Action("Index","Productos")" method="post" id="frm">
-            <a class="usandoclases" id="usandoID">Buscar</a>@**@
-            <div id="hidden" class="Hidden1" style="display:none;">
-                <div class="form-group">
-                    <input type="text" name="txtbuscar" value="" class="form-control" placeholder=" Digite nombre" autocomplete="off" />
-                    <input type="submit" class="btn btn-info" name="btn" value="BUSCAR" />
+<form action="@Url.Action("Index","Productos")" method="post">
+    <div class="">
+        <input type="text" name="txtbuscar"  placeholder=" Digite nombre" autocomplete="off" />
+        <input type="submit" class="btn btn-info" name="btn" value="BUSCAR" />
 
-                </div>
-            </div>
-        </form>
     </div>
-</center>
+</form>
 <div class="table-responsive">
     <table class="table table-bordered">
 
@@ -97,7 +90,7 @@
     </table>
 </div>
 
-@section mostrarOcultar{    
+@*@section mostrarOcultar{    
 <script type="text/javascript">
     $(document).ready(
         function () {
@@ -112,5 +105,5 @@
 
 
 
-}
+}*@
 

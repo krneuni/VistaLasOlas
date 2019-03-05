@@ -40,8 +40,18 @@ namespace VLO.Controllers
         public ActionResult Create()
         {
 
+            //Muestre los pedidos
+            var TodasPedidos = db.Pedido.ToList();
+            //Muestra la union de las dos tablas
+            var ide = (Session["pedidoid"]);
+            int id = Convert.ToInt32(ide);
+            var Clientes = (from p in db.Pedido where p.IdPedido == id select p).ToList();
+            
+            //Muestra los clientes que  estan en esa mesa
+            //var ClientMesa = TodasPedidos.Except(Clientes);
+
             ViewBag.IdMenu = new SelectList(db.Menus, "IdMenu", "Nombre");
-            ViewBag.IdPedido = new SelectList(db.Pedido, "IdPedido", "Cliente");
+            ViewBag.IdPedido = new SelectList(Clientes, "IdPedido", "Cliente");
             return View();
         }
 
@@ -56,7 +66,6 @@ namespace VLO.Controllers
             {
                 db.DetallePedido.Add(detallePedido);
                 db.SaveChanges();
-
                 //Busqueda los Id los menus que este en ambas tablas para luego descontar
                 var DescontarMenus = (from p in db.Receta
                                       where p.IdMenu == detallePedido.IdMenu
